@@ -19,4 +19,11 @@ class CrudTest < Capybara::Rails::TestCase
     page.fill_in "question_body", with: "How many slices are in a pizza?"
     click_button "Create Question"
   end
+
+  def test_lists_questions_on_quiz_page
+    q = Quiz.create(title: "Pizza Quiz", slug: "pizza-quiz")
+    Question.create(quiz: q, body: "How many pizzas in a slice?")
+    visit quiz_path(q)
+    assert page.has_content?("How many pizzas in a slice?")
+  end
 end
