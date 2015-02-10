@@ -1,0 +1,94 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+.container {
+  padding:   3em;
+  position:  relative;
+  font-size: 1.25em;
+}
+
+.question {
+  position:         relative;
+  background-color: #eee;
+  margin:           0em;
+  padding:          0em;
+  margin-bottom:    2em;
+}
+
+h3 {
+  box-sizing:       border-box;
+  position:         relative;
+  padding:          0.5em;
+  margin:           0em;
+  width:            100%;
+  background-color: #858;
+  font-size:        1.5em;
+  font-family:      sans-serif;
+  color:            #fff;
+}
+
+
+.body {
+  padding:    1em;
+  border:     5px solid #858;
+  border-top: 0px;
+}
+
+.options {
+  .option {
+    margin-bottom:  0.5em;
+  }
+  .name {
+    display:        inline-block;
+    vertical-align: top;
+    font-weight:    bold;
+    margin-right:   0.5em;
+  }
+  .value {
+    display:        inline-block;
+    vertical-align: top;
+  }
+  p {
+    border: 0em;
+    margin: 0em;
+  }
+}
+
+.answer {
+  padding:          0.5em;
+  margin-bottom:    0.5em;
+  background-color: #afa;
+  font-family:      sans-serif;
+  font-weight:      bold;
+  color:            #383;
+}
+
+.hint {
+  padding:          0.5em;
+  margin-bottom:    0.5em;
+  background-color: #fc8;
+  font-family:      sans-serif;
+  font-weight:      bold;
+  color:            #a50;
+}
+
+.further-thought {
+  padding:          0.5em;
+  background-color: #aaf;
+  font-family:      sans-serif;
+  font-weight:      bold;
+  color:            #338;
+}
