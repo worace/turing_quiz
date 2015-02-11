@@ -26,7 +26,7 @@ class HintsControllerTest < ActionController::TestCase
 
   test "should update hint" do
     patch :update, id: @hint, hint: { body: @hint.body, question_id: @hint.question_id }
-    assert_redirected_to hint_path(assigns(:hint))
+    assert_redirected_to quiz_path(@q.quiz)
   end
 
   test "should destroy hint" do
