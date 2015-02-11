@@ -2,7 +2,7 @@ require 'test_helper'
 
 class QuestionsControllerTest < ActionController::TestCase
   setup do
-    @quiz = quizzes(:one)
+    @quiz = Quiz.create(title: "my quiz", slug: "my-quiz")
     @question = Question.create(body: "question", quiz: @quiz)
   end
 

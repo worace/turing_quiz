@@ -2,7 +2,8 @@ require 'test_helper'
 
 class FurtherThoughtsControllerTest < ActionController::TestCase
   setup do
-    @q = Question.create(quiz: quizzes(:one))
+    quiz = Quiz.create(title: "my quiz", slug: "my-quiz")
+    @q = Question.create(quiz: quiz, body: "heres a question")
     @further_thought = FurtherThought.create(question: @q)
   end
 

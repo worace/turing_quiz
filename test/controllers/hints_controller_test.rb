@@ -2,7 +2,8 @@ require 'test_helper'
 
 class HintsControllerTest < ActionController::TestCase
   setup do
-    @q = Question.create(quiz: quizzes(:one))
+    quiz = Quiz.create(title: "my quiz", slug: "my-quiz")
+    @q = Question.create(quiz: quiz, body: "heres a question")
     @hint = Hint.create(question: @q)
   end
 
