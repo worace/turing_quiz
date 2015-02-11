@@ -16,8 +16,8 @@
       <tr>
         <td><%= quiz.title %></td>
         <td><%= quiz.slug %></td>
-        <td><%= link_to 'Show', quiz %></td>
-        <td><%= link_to 'Edit', edit_quiz_path(quiz) %></td>
+        <td><%= link_to 'View Quiz', quiz_path(quiz) %></td>
+        <td><%= link_to 'Edit', edit_admin_quiz_path(quiz) %></td>
         <td><%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Quiz', new_quiz_path %>
+<%= link_to 'New Quiz', new_admin_quiz_path %>
