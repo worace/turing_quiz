@@ -1,10 +1,10 @@
-<%= form_for([@quiz, @question]) do |f| %>
-  <% if @question.errors.any? %>
+<%= form_for([:admin, @question, @resource]) do |f| %>
+  <% if @resource.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+      <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this further_thought from being saved:</h2>
 
       <ul>
-      <% @question.errors.full_messages.each do |message| %>
+      <% @resource.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

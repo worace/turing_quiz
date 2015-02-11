@@ -1,6 +1,0 @@
-<h1>Editing <%= @resource.class.name.underscore.split("_").map(&:capitalize).join(" ") %></h1>
-
-<%= render 'question_resources/form' %>
-
-<%= link_to 'Show', @resource %> |
-<%= link_to 'Back', quiz_path(@resource.quiz) %>

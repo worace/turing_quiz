@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class OptionsControllerTest < ActionController::TestCase
+class Admin::OptionsControllerTest < ActionController::TestCase
   setup do
     quiz = Quiz.create(title: "my quiz", slug: "my-quiz")
     @q = Question.create(quiz: quiz, body: "heres a question")
@@ -17,7 +17,7 @@ class OptionsControllerTest < ActionController::TestCase
       post :create, question_id: @q.id, option: { body: @option.body, question_id: @option.question_id }
     end
 
-    assert_redirected_to quiz_path(@q.quiz)
+    assert_redirected_to admin_quiz_path(@q.quiz)
   end
 
   test "should get edit" do
@@ -27,7 +27,7 @@ class OptionsControllerTest < ActionController::TestCase
 
   test "should update option" do
     patch :update, id: @option, option: { body: @option.body, question_id: @option.question_id }
-    assert_redirected_to quiz_path(@q.quiz)
+    assert_redirected_to admin_quiz_path(@q.quiz)
   end
 
   test "should destroy option" do
@@ -35,6 +35,6 @@ class OptionsControllerTest < ActionController::TestCase
       delete :destroy, id: @option
     end
 
-    assert_redirected_to quiz_path(@q.quiz)
+    assert_redirected_to admin_quiz_path(@q.quiz)
   end
 end

@@ -1,4 +1,4 @@
-class QuestionsController < ApplicationController
+class Admin::QuestionsController < ApplicationController
   before_action :set_quiz, only: [:new, :create]
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params.merge(:quiz => @quiz))
 
     if @question.save
-      redirect_to quiz_path(@quiz), notice: 'Question was successfully created.'
+      redirect_to admin_quiz_path(@quiz), notice: 'Question was successfully created.'
     else
       render :new
     end
@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
-      redirect_to @question, notice: 'Question was successfully updated.'
+      redirect_to admin_quiz_path(@question.quiz), notice: 'Question was successfully updated.'
     else
       render :edit
     end
@@ -29,7 +29,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    redirect_to quiz_url(@question.quiz), notice: 'Question was successfully destroyed.'
+    redirect_to admin_quiz_path(@question.quiz), notice: 'Question was successfully destroyed.'
   end
 
   private

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class QuizzesControllerTest < ActionController::TestCase
+class Admin::QuizzesControllerTest < ActionController::TestCase
   setup do
     @quiz = Quiz.create(title: "my quiz", slug: "my-quiz")
   end
@@ -15,7 +15,7 @@ class QuizzesControllerTest < ActionController::TestCase
       post :create, quiz: { slug: @quiz.slug, title: @quiz.title }
     end
 
-    assert_redirected_to quiz_path(assigns(:quiz))
+    assert_redirected_to admin_quiz_path(assigns(:quiz))
   end
 
   test "should get edit" do
@@ -25,7 +25,7 @@ class QuizzesControllerTest < ActionController::TestCase
 
   test "should update quiz" do
     patch :update, id: @quiz, quiz: { slug: @quiz.slug, title: @quiz.title }
-    assert_redirected_to quiz_path(assigns(:quiz))
+    assert_redirected_to admin_quiz_path(assigns(:quiz))
   end
 
   test "should destroy quiz" do
@@ -33,6 +33,6 @@ class QuizzesControllerTest < ActionController::TestCase
       delete :destroy, id: @quiz
     end
 
-    assert_redirected_to quizzes_path
+    assert_redirected_to admin_quizzes_path
   end
 end

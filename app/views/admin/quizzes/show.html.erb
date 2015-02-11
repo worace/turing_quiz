@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Quiz: <%= @quiz.title %></h3>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @quiz.slug %>
+</p>
+
+<h3>Questions</h3>
+<ul>
+  <% @quiz.questions.each do |q| %>
+    <li>
+      <p>
+        <span><strong>Question: </strong><%= q.body %></span>
+        <span><%= link_to "edit", edit_admin_question_path(q) %></span>
+        <span><%= link_to "delete", admin_question_path(q), method: :delete %></span>
+      </p>
+      <% ["option", "hint", "answer", "further_thought"].each do |resource| %>
+        <% res = q.send(resource.pluralize) %>
+        <% if res.any? %>
+          <% res.each do |r| %>
+            <p>
+              <strong><%=resource.capitalize%>:</strong> <%= r.body %>
+              <span><%= link_to "edit", send("edit_admin_#{resource}_path", r) %></span>
+              <span><%= link_to "delete", send("admin_#{resource}_path", r), method: :delete %></span>
+            </p>
+          <% end %>
+        <% end %>
+        <p><%= link_to "add #{resource}", send("new_admin_question_#{resource}_path", q) %></p>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_admin_quiz_path(@quiz) %> |
+<%= link_to 'Add Question', new_admin_quiz_question_path(@quiz) %> |
+<%= link_to 'Back', admin_quizzes_path %>

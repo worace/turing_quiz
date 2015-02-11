@@ -1,38 +1,38 @@
-class QuestionResourcesController < ApplicationController
+class Admin::QuestionResourcesController < ApplicationController
   include QuestionNested
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
 
   def new
     @resource = resource.new(question: @question)
-    render :template => "question_resources/new"
+    render :template => "admin/question_resources/new"
   end
 
   def edit
-    render :template => "question_resources/edit"
+    render :template => "admin/question_resources/edit"
   end
 
   def create
     @resource = resource.new(resource_params.merge({question: @question}))
 
     if @resource.save
-      redirect_to quiz_path(@resource.quiz), notice: "#{resource.class.name} was successfully created."
+      redirect_to admin_quiz_path(@resource.quiz), notice: "#{resource.class.name} was successfully created."
     else
-      render :template => "question_resources/new"
+      render :template => "admin/question_resources/new"
     end
   end
 
   def update
     if @resource.update(resource_params)
-      redirect_to quiz_path(@resource.quiz), notice: "#{resource.class.name} was successfully updated."
+      redirect_to admin_quiz_path(@resource.quiz), notice: "#{resource.class.name} was successfully updated."
     else
-      render :template => "question_resources/edit"
+      render :template => "admin/question_resources/edit"
     end
   end
 
   # DELETE /further_thoughts/1
   def destroy
     @resource.destroy
-    redirect_to quiz_path(@resource.quiz), notice: "#{resource.class.name} was successfully destroyed."
+    redirect_to admin_quiz_path(@resource.quiz), notice: "#{resource.class.name} was successfully destroyed."
   end
 
   private

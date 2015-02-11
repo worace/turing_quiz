@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AnswersControllerTest < ActionController::TestCase
+class Admin::AnswersControllerTest < ActionController::TestCase
   setup do
     quiz = Quiz.create(title: "my quiz", slug: "my-quiz")
     @question = Question.create(quiz: quiz, body: "heres a question")
@@ -19,7 +19,7 @@ class AnswersControllerTest < ActionController::TestCase
 
     assert_equal @question, Answer.last.question
 
-    assert_redirected_to quiz_path(@question.quiz)
+    assert_redirected_to admin_quiz_path(@question.quiz)
   end
 
   test "should get edit" do
@@ -29,7 +29,7 @@ class AnswersControllerTest < ActionController::TestCase
 
   test "should update answer" do
     patch :update, id: @answer, answer: { body: @answer.body, question_id: @answer.question_id }
-    assert_redirected_to quiz_path(@question.quiz)
+    assert_redirected_to admin_quiz_path(@question.quiz)
   end
 
   test "should destroy answer" do
@@ -37,6 +37,6 @@ class AnswersControllerTest < ActionController::TestCase
       delete :destroy, id: @answer
     end
 
-    assert_redirected_to quiz_path(@question.quiz)
+    assert_redirected_to admin_quiz_path(@question.quiz)
   end
 end
