@@ -1,3 +1,3 @@
 class Hint < ActiveRecord::Base
-  belongs_to :question
+  include QuestionChild
 end

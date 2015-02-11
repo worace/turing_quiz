@@ -12,13 +12,19 @@
   <% @quiz.questions.each do |q| %>
     <li>
       <p><strong>Question: </strong><%= q.body %></p>
-      <% q.answers.each do |a| %>
-        <p><strong>Answer:</strong> <%= a.body %>
-          <span><%= link_to "edit", edit_answer_path(a) %></span>
-          <span><%= link_to "delete", answer_path(a), method: :delete %></span>
-          </p>
+      <% ["option", "hint", "answer", "further_thought"].each do |resource| %>
+        <% res = q.send(resource.pluralize) %>
+        <% if res.any? %>
+          <% res.each do |r| %>
+            <p>
+              <strong><%=resource.capitalize%>:</strong> <%= r.body %>
+              <span><%= link_to "edit", send("edit_#{resource}_path", r) %></span>
+              <span><%= link_to "delete", send("#{resource}_path", r), method: :delete %></span>
+            </p>
+          <% end %>
+        <% end %>
+        <p><%= link_to "add #{resource}", send("new_question_#{resource}_path", q) %></p>
       <% end %>
-      <p><%= link_to "add answer", new_question_answer_path(q) %></p>
     </li>
   <% end %>
 </ul>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @further_thought.body %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @further_thought.question_id %>
+</p>
+
+<%= link_to 'Edit', edit_further_thought_path(@further_thought) %> |
+<%= link_to 'Back', further_thoughts_path %>

@@ -4,13 +4,17 @@ Rails.application.routes.draw do
   resources :quizzes do
     resources :questions, only: [:new, :create]
   end
+
   resources :questions, only: [:edit, :update, :destroy]
   resources :answers, only: [:edit, :update, :destroy]
+  resources :hints, only: [:edit, :update, :destroy]
+  resources :options, only: [:edit, :update, :destroy]
+  resources :further_thoughts, only: [:edit, :update, :destroy]
 
   resources :questions, only: [] do
     resources :answers, only: [:new, :create]
-    resources :options
-    resources :hints
-    resources :further_thoughts
+    resources :hints, only: [:new, :create]
+    resources :options, only: [:new, :create]
+    resources :further_thoughts, only: [:new, :create]
   end
 end

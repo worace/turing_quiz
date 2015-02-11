@@ -1,3 +1,3 @@
 class FurtherThought < ActiveRecord::Base
-  belongs_to :question
+  include QuestionChild
 end
