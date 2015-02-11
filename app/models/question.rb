@@ -5,4 +5,8 @@ class Question < ActiveRecord::Base
   has_many :answers
   has_many :further_thoughts
   validates_presence_of :quiz_id
+
+  def resources
+    options + hints + answers + further_thoughts
+  end
 end

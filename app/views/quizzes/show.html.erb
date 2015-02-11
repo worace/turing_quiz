@@ -1,0 +1,56 @@
+<div class="container">
+  <h1>Quiz!</h1>
+  <h2><%= @quiz.title %></h2>
+
+
+  <h3>Explanation</h3>
+  <p>Go through the questions below. The purpose is not to test you, it's to allow you to test yourself.</p>
+  <p>Your goal isn't to get the answers right, it's to assimilate the knowledge in the questions.</p>
+  <p>This is self-scored, it is for you to help push yourself along and address gaps in your knowledge.</p>
+
+  <h3>How to take the quiz</h3>
+  <ol>
+    <li>Look at the question, answer it in your head.</li>
+    <li>If you need help, click the "hint" option.</li>
+    <li>If you don't know the answer, go ahead and look at it, and then read through the further thought to help you understand why that is the answer.</li>
+    <li>If you do know the answer, say it to yourself in your head, then look and see that you were correct.</li>
+    <li>Go ahead and read the "further thought" to see some of the context and nuance behind the answers that we were thinking about as we wrote them.</li>
+  </ol>
+
+
+  <% @quiz.questions.each do |question| %>
+    <div class="question">
+      <h3>Q: <%= question.body %></h3>
+      <div class="body">
+        <% if question.options.any? %>
+          <div class="options">
+            <% question.options.each do |option| %>
+              <div class='option'>
+                <%#<div class='name'></div> %>
+                <div class='value'><%= option.body %></div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if question.hints.any? %>
+          <% question.hints.each do |hint| %>
+            <div class="hint"><%= hint.body %></div>
+          <% end %>
+        <% end %>
+
+        <% if question.answers.any? %>
+          <% question.answers.each do |answer| %>
+            <div class="answer"><b><%= answer.body %></b></div>
+          <% end %>
+        <% end %>
+
+        <% if question.further_thoughts.any? %>
+          <% question.further_thoughts.each do |further_thought| %>
+            <div class="further-thought"><b><%= further_thought.body %></b></div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
