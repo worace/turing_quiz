@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  body: 
+  body: MyString
   question_id: 1
 
 two:
-  body: 
+  body: MyString
   question_id: 1

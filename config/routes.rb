@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
-  resources :questions
-
   root to: "quizzes#index"
 
   resources :quizzes do
-    resources :questions do
-      resources :answers
-      resources :options
-      resources :hints
-      resources :further_thoughts
-    end
+    resources :questions, only: [:new, :create]
+  end
+  resources :questions, only: [:edit, :update, :destroy]
+  resources :answers, only: [:edit, :update, :destroy]
+
+  resources :questions, only: [] do
+    resources :answers, only: [:new, :create]
+    resources :options
+    resources :hints
+    resources :further_thoughts
   end
 end

@@ -2,14 +2,8 @@ require 'test_helper'
 
 class QuestionsControllerTest < ActionController::TestCase
   setup do
-    @question = questions(:one)
     @quiz = quizzes(:one)
-  end
-
-  test "should get index" do
-    get :index, quiz_id: @quiz.id
-    assert_response :success
-    assert_not_nil assigns(:questions)
+    @question = Question.create(body: "question", quiz: @quiz)
   end
 
   test "should get new" do
@@ -23,11 +17,6 @@ class QuestionsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to quiz_path(@quiz)
-  end
-
-  test "should show question" do
-    get :show, id: @question, quiz_id: @quiz.id
-    assert_response :success
   end
 
   test "should get edit" do
@@ -45,6 +34,6 @@ class QuestionsControllerTest < ActionController::TestCase
       delete :destroy, id: @question
     end
 
-    assert_redirected_to questions_path
+    assert_redirected_to quiz_path(@quiz)
   end
 end

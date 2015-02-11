@@ -1,13 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :set_quiz, only: [:index, :new, :create, :show]
+  before_action :set_quiz, only: [:new, :create]
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @questions = @quiz.questions
-  end
-
-  def show
-  end
 
   def new
     @question = Question.new(:quiz => @quiz)
@@ -36,7 +29,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    redirect_to questions_url, notice: 'Question was successfully destroyed.'
+    redirect_to quiz_url(@question.quiz), notice: 'Question was successfully destroyed.'
   end
 
   private

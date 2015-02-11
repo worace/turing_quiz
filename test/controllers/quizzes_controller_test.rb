@@ -5,14 +5,8 @@ class QuizzesControllerTest < ActionController::TestCase
     @quiz = quizzes(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:quizzes)
-  end
-
   test "should get new" do
-    get :new
+    get :new, quiz: @quiz
     assert_response :success
   end
 
@@ -22,11 +16,6 @@ class QuizzesControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to quiz_path(assigns(:quiz))
-  end
-
-  test "should show quiz" do
-    get :show, id: @quiz
-    assert_response :success
   end
 
   test "should get edit" do
