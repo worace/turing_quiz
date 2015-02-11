@@ -40,7 +40,8 @@ class Admin::QuizzesController < ApplicationController
 
   private
     def set_quiz
-      @quiz = Quiz.find(params[:id])
+      @quiz = Quiz.find_by(slug: params[:id])
+      raise ActiveRecord::RecordNotFound unless @quiz
     end
 
     def quiz_params

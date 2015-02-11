@@ -39,7 +39,8 @@ class Admin::QuestionsController < ApplicationController
     end
 
     def set_quiz
-      @quiz = Quiz.find(params[:quiz_id])
+      @quiz = Quiz.find_by(slug: params[:quiz_id])
+      raise ActiveRecord::RecordNotFound unless @quiz
     end
 
     # Only allow a trusted parameter "white list" through.

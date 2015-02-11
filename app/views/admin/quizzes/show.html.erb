@@ -33,6 +33,7 @@
   <% end %>
 </ul>
 
+<%= link_to 'View Quiz', quiz_path(@quiz) %> |
 <%= link_to 'Edit', edit_admin_quiz_path(@quiz) %> |
 <%= link_to 'Add Question', new_admin_quiz_question_path(@quiz) %> |
 <%= link_to 'Back', admin_quizzes_path %>
