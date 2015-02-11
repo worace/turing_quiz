@@ -37,7 +37,7 @@ Hidable.prototype.show = function() {
   return this
 }
 
-jQuery(function() {
+$(function() {
   var hideByClass = function(className, placeholderText) {
     jQuery(className).each(function(index, rawDomElement) {
       var domElement = jQuery(rawDomElement)
