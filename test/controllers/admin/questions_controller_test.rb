@@ -7,13 +7,13 @@ class Admin::QuestionsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new, quiz_id: @quiz.id
+    get :new, quiz_id: @quiz.slug
     assert_response :success
   end
 
   test "should create question" do
     assert_difference('Question.count') do
-      post :create, quiz_id: @quiz.id, question: { body: @question.body, quiz_id: @question.quiz_id }
+      post :create, quiz_id: @quiz.slug, question: { body: @question.body, quiz_id: @question.quiz_id }
     end
 
     assert_redirected_to admin_quiz_path(@quiz)
