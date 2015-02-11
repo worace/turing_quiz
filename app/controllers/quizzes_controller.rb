@@ -6,5 +6,6 @@ class QuizzesController < ApplicationController
 
   def set_quiz
     @quiz = Quiz.find_by(slug: params[:id])
+    raise ActiveRecord::RecordNotFound unless @quiz
   end
 end
