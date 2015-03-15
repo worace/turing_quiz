@@ -24,7 +24,7 @@
       <div class="body">
         <% if question.options.any? %>
           <div class="options">
-            <% question.options.each do |option| %>
+            <% question.options.order(id: :asc).each do |option| %>
               <div class='option'>
                 <div class='value'><%= option.body %></div>
               </div>
